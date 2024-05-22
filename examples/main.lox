@@ -1,0 +1,6 @@
+var meow = "ok"
+// this is a comment this shouldn't be read
+print meow
+
+/* this is another comment  /* this is a nested comment */  */
+var brr = "brr"
