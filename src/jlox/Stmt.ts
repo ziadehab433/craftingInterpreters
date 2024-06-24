@@ -4,6 +4,7 @@ import { Expr } from './Expr.js';
 export interface StmtVisitor<R> { 
     visitExpressionStmt: (stmt: any) => R; 
     visitPrintStmt: (stmt: any) => R; 
+    visitVarStmt: (stmt: any) => R; 
 }
 
 export abstract class Stmt{ 
@@ -35,6 +36,22 @@ export abstract class Stmt{
         } 
  
         readonly expression: Expr 
+    } 
+
+    static Var = class extends Stmt{ 
+        constructor( name: Token,initializer: Expr ){ 
+            super(); 
+ 
+            this.name = name 
+            this.initializer = initializer 
+        } 
+ 
+        accept(visitor: StmtVisitor<any>): any { 
+            return visitor.visitVarStmt(this); 
+        } 
+ 
+        readonly name: Token 
+        readonly initializer: Expr 
     } 
 
 } 

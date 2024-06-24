@@ -12,12 +12,14 @@ if(arglen != 3){
         "Binary   :left Expr,operator Token,right Expr",
         "Grouping :expression Expr",
         "Literal  :value any",
-        "Unary    :operator Token,right Expr"
+        "Unary    :operator Token,right Expr", 
+        "Variable :name Token"
     ]);
 
     defineAST(outputDir, "Stmt", [ 
         "Expression :expression Expr", 
-        "Print      :expression Expr"
+        "Print      :expression Expr", 
+        "Var        :name Token,initializer Expr"
     ]);
 }
 

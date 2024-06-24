@@ -5,6 +5,7 @@ export interface ExprVisitor<R> {
     visitGroupingExpr: (expr: any) => R; 
     visitLiteralExpr: (expr: any) => R; 
     visitUnaryExpr: (expr: any) => R; 
+    visitVariableExpr: (expr: any) => R; 
 }
 
 export abstract class Expr{ 
@@ -70,6 +71,20 @@ export abstract class Expr{
  
         readonly operator: Token 
         readonly right: Expr 
+    } 
+
+    static Variable = class extends Expr{ 
+        constructor( name: Token ){ 
+            super(); 
+ 
+            this.name = name 
+        } 
+ 
+        accept(visitor: ExprVisitor<any>): any { 
+            return visitor.visitVariableExpr(this); 
+        } 
+ 
+        readonly name: Token 
     } 
 
 } 

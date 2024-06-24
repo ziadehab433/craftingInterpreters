@@ -5,7 +5,6 @@ import { Token } from './Token.js';
 import { TokenType } from './TokenType.js';
 import { Parser } from './Parser.js';
 import { Expr } from './Expr.js';
-import { AstPrinter } from './AstPrinter.js';
 import { RuntimeError } from './RuntimeError.js';
 import { Interpreter } from './Interpreter.js';
 import { Stmt } from './Stmt.js';

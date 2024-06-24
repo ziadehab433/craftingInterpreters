@@ -1,36 +1,38 @@
-import { Expr, ExprVisitor } from './Expr.js';
+// i don't want to maintain it so i just commented it out.
 
-export class AstPrinter implements ExprVisitor<String>{
-    print(expr: Expr): string{ 
-        return expr.accept(this);
-    }
+//import { Expr, ExprVisitor } from './Expr.js';
 
-    visitBinaryExpr(expr: any): string{ 
-        return this.parenthesize(expr.operator.lexeme, expr.left, expr.right);
-    }
+//export class AstPrinter implements ExprVisitor<String>{
+    //print(expr: Expr): string{ 
+        //return expr.accept(this);
+    //}
 
-    visitGroupingExpr(expr: any): string{ 
-        return this.parenthesize("group", expr.expression);
-    }
+    //visitBinaryExpr(expr: any): string{ 
+        //return this.parenthesize(expr.operator.lexeme, expr.left, expr.right);
+    //}
 
-    visitLiteralExpr(expr: any): string{ 
-        if(expr.value == null) return "nil";
-        return expr.value.toString();
-    }
+    //visitGroupingExpr(expr: any): string{ 
+        //return this.parenthesize("group", expr.expression);
+    //}
 
-    visitUnaryExpr(expr: any): string{ 
-        return this.parenthesize(expr.operator.lexeme, expr.right);
-    }
+    //visitLiteralExpr(expr: any): string{ 
+        //if(expr.value == null) return "nil";
+        //return expr.value.toString();
+    //}
 
-    parenthesize(name: string, ...exprs: Expr[]): string{ 
-        let builder: string = "";
+    //visitUnaryExpr(expr: any): string{ 
+        //return this.parenthesize(expr.operator.lexeme, expr.right);
+    //}
 
-        builder += "(" + name;
-        exprs.forEach(expr => { 
-            builder += ` ${expr.accept(this)}`;
-        })
-        builder += ")";
+    //parenthesize(name: string, ...exprs: Expr[]): string{ 
+        //let builder: string = "";
 
-        return builder;
-    }
-}
+        //builder += "(" + name;
+        //exprs.forEach(expr => { 
+            //builder += ` ${expr.accept(this)}`;
+        //})
+        //builder += ")";
+
+        //return builder;
+    //}
+//}

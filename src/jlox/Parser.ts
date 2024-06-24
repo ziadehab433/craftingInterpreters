@@ -15,10 +15,21 @@ export class Parser {
     parse(): Stmt[]{ 
         let statements: Stmt[] = []
         while(!this.isAtEnd()){ 
-            statements.push(this.statement());
+            statements.push(this.declaration());
         }
 
         return statements
+    }
+
+    declaration(): Stmt | null { 
+        try { 
+            if(this.match(TokenType.VAR)) return this.varDeclaration()
+
+            return this.statement()
+        }catch(e) { 
+            this.synchronize()
+            return null
+        }
     }
 
     statement(): Stmt { 
